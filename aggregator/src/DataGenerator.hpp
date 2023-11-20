@@ -4,6 +4,8 @@
 #include <random>
 #include <thread>
 
+#include <iostream>
+
 #include "ConcurrentQueue.hpp"
 #include "VectorGenerator.hpp"
 
@@ -12,6 +14,8 @@ class DataGenerator {
 private:
     std::unique_ptr<VectorGenerator> _vectorGenerator;
     ConcurrentQueue<std::vector<int>>& _output;
+
+    int _count = 0;
 
 public:
     DataGenerator(std::unique_ptr<VectorGenerator> vectorGenerator,
@@ -32,18 +36,21 @@ private:
 
         std::uniform_int_distribution<> distribution(0, 10000);
 
-        std::chrono::milliseconds duration(distribution(gen));
+        std::chrono::milliseconds duration(10000);// distribution(gen));
 
         auto startTime = std::chrono::system_clock::now();
 
         while (std::chrono::system_clock::now() < startTime + duration) {
             generateNext();
-            std::this_thread::sleep_for(std::chrono::milliseconds(10));
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
+
+        std::cout << "Generated " << _count << std::endl;
     }
 
     void generateNext() {
         _output.push(_vectorGenerator->create()); 
+        _count ++;
     }
 
 };

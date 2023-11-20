@@ -3,6 +3,8 @@
 #include <atomic>
 #include <condition_variable>
 
+#include <iostream>
+
 namespace aggregator {
 class DataAggregator {
 private:
@@ -18,7 +20,7 @@ public:
         : _input(input), _stopped(false), _inputCond(input.condition_variable()) {}
 
     void stop() {
-        _stopped = false;
+        _stopped = true;
         _inputCond.notify_all();
     }
 
@@ -28,18 +30,25 @@ public:
     }
 
     int result() {
+        std::cout << "Size " << _size << std::endl;
         return _currentSum / _size;
     }
 
 private:
     void aggregateNext() {
-        _currentSum += _input.front(_stopped);
+        int value = 0;
+        if (!_input.front(value, _stopped)) {
+            return;
+        }
+        _currentSum += value;
         _size ++;
         _input.pop();
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(2));
     }
 
     void aggregateUntilStopped() {
-        while (!_stopped) {
+        while (!_stopped || !_input.empty()) {
             aggregateNext();
         }
     }

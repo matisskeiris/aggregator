@@ -20,9 +20,11 @@ int main() {
     auto aggregatorThread = dataAggregator.aggregate();
 
     generationThread.join();
+    std::cout << "Generation finished" << std::endl;
     dataProcessor.stop();
 
     processorThread.join();
+    std::cout << "Proccessing finished" << std::endl;
     dataAggregator.stop();
 
     aggregatorThread.join();

@@ -30,7 +30,10 @@ public:
 
 private:
     void processNext() {
-        auto& vector = _input.front(_stopped);
+        std::vector<int> vector;
+        if (!_input.front(vector, _stopped)) {
+            return;
+        }
 
         int result = 0;
         for (int i = 0 ; i < vector.size() ; i ++) {
@@ -42,7 +45,7 @@ private:
     }
 
     void processUntilStopped() {
-        while (!_stopped) {
+        while (!_stopped || !_input.empty()) {
             processNext();
         }
     }
