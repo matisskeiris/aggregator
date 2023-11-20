@@ -4,6 +4,15 @@
     <ClCompile Include="C:\repos\aggregator\aggregator.tests\src\ConcurrentQueue.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\repos\aggregator\aggregator.tests\src\DataAggregator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repos\aggregator\aggregator.tests\src\DataGenerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\repos\aggregator\aggregator.tests\src\DataProcessor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\repos\aggregator\aggregator.tests\CMakeLists.txt" />

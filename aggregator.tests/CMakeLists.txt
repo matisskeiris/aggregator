@@ -13,4 +13,6 @@ FetchContent_MakeAvailable(googletest)
 file( GLOB LIB_SOURCES src/*.cpp )
 
 add_executable(aggregator.tests ${LIB_SOURCES})
-target_link_libraries(aggregator.tests gtest_main aggregator)
+target_link_libraries(aggregator.tests gtest_main)
+
+target_include_directories(aggregator.tests PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../aggregator/src")

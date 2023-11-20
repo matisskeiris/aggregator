@@ -177,6 +177,26 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{590D671E-259B-3F37-B3DC-9694B2A07B73}</Project>
       <Name>aggregator.runner</Name>
     </ProjectReference>
+    <ProjectReference Include="C:\repos\aggregator\aggregator.tests\aggregator.tests.vcxproj">
+      <Project>{C8C7718F-9470-3BE3-8483-67B5E8D6AA8E}</Project>
+      <Name>aggregator.tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\repos\aggregator\_deps\googletest-build\googlemock\gmock.vcxproj">
+      <Project>{84821D56-6D21-3744-93FA-EA8FEDA69C10}</Project>
+      <Name>gmock</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\repos\aggregator\_deps\googletest-build\googlemock\gmock_main.vcxproj">
+      <Project>{FC2354AE-D492-3853-8F5D-E1EB273958A8}</Project>
+      <Name>gmock_main</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\repos\aggregator\_deps\googletest-build\googletest\gtest.vcxproj">
+      <Project>{6F0F2092-2CCB-3173-ACB3-DB58B5BF2E4C}</Project>
+      <Name>gtest</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\repos\aggregator\_deps\googletest-build\googletest\gtest_main.vcxproj">
+      <Project>{6D400433-A749-34A7-97A8-1D542C039DC0}</Project>
+      <Name>gtest_main</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

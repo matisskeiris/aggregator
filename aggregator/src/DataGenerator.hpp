@@ -36,7 +36,7 @@ private:
 
         std::uniform_int_distribution<> distribution(0, 10000);
 
-        std::chrono::milliseconds duration(10000);// distribution(gen));
+        std::chrono::milliseconds duration(distribution(gen));
 
         auto startTime = std::chrono::system_clock::now();
 
